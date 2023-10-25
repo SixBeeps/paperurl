@@ -43,13 +43,19 @@ export async function GET(req) {
 	// If no URL is provided, return an error
 	if (!to) {
 		prisma.$disconnect()
-		return failure("No URL provided")
+		return failure("No destination URL provided")
 	}
 
 	// If URL is invalid, return an error
 	if (!isUrlValid(to)) {
 		prisma.$disconnect()
-		return failure("Invalid URL provided, please include http:// or https://")
+		return failure("Invalid destination URL provided, please include http:// or https://")
+	}
+
+	// If the URL is already in the database, return an error
+	if (await prisma.link.findUnique({ where: { shortUrl: from } })) {
+		prisma.$disconnect()
+		return failure("Short URL already taken")
 	}
 
 	// Create the new link
@@ -75,7 +81,7 @@ export async function GET(req) {
 
 	// Add the new link to the cookie array
 	cookieLinks.push({
-		to,
+		from,
 		key
 	})
 	cookieStore.set("links", JSON.stringify(cookieLinks), {
