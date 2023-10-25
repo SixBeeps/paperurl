@@ -77,7 +77,9 @@ export async function GET(req) {
 		to,
 		key
 	})
-	cookieStore.set("links", JSON.stringify(cookieLinks))
+	cookieStore.set("links", JSON.stringify(cookieLinks), {
+		expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 400), // Chrome has a 400 day limit on cookies
+	})
 
 	// Return the new link
 	prisma.$disconnect()
