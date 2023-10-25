@@ -24,18 +24,19 @@ export async function GET(req) {
 	const params = req.nextUrl.searchParams
 
 	// Helper function to generate a random URL that doesn't already exist
-	const generateUrl = () => {
+	const generateUrl = async () => {
 		let result;
 		do {
 			result = randomCharacters(6)
-		} while (prisma.link.findUnique({ where: { shortUrl: result } }))
+			console.log(result)
+		} while (await prisma.link.findUnique({ where: { shortUrl: result } }) !== null)
 
 		return result
 	}
 
 	// Get query parameters
-	const from = params.get("from")
-	const to = params.get("to") || generateUrl();
+	const from = params.get("from") || await generateUrl();
+	const to = params.get("to")
 	const key = randomCharacters(32)
 	const friendly = params.get("friendly") || 'Untitled link'
 
