@@ -3,6 +3,7 @@
 import { PrismaClient } from '@prisma/client'
 import { cookies } from 'next/headers'
 import { success, failure } from '@/util/simple_responses'
+import { isUrlValid } from '@/util/url_valid'
 
 // Helper function to generate a random string of characters
 function randomCharacters(length) {
@@ -12,11 +13,6 @@ function randomCharacters(length) {
 		result += characters.charAt(Math.floor(Math.random() * characters.length))
 	}
 	return result
-}
-
-// Helper function that determines if a URL is valid
-function isUrlValid(url) {
-	return url.startsWith("http://") || url.startsWith("https://")
 }
 
 export async function GET(req) {

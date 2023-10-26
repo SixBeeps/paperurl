@@ -20,7 +20,15 @@ export async function GET(req, context) {
 		return failure("Link not found");
 	}
 
-	// If it does, redirect to the original URL
+	// If it does, update visit counter and redirect to the original URL
+	await prisma.link.update({
+		where: {
+			shortUrl: context.params.link,
+		},
+		data: {
+			visits: link.visits + 1,
+		},
+	});
 	prisma.$disconnect();
 	return NextResponse.redirect(link.originalUrl);
 }
