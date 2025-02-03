@@ -47,6 +47,13 @@
   width: 100%;
 }
 
+.formActions {
+  composes: formField;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
 .required {
   color: var(--important);
   font-size: 18pt;
@@ -61,11 +68,17 @@
 }
 
 .inputText {
+  composes: input;
   flex-grow: 1;
 }
 
 .inputButton {
+  composes: input;
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
 .inputButton:hover {
