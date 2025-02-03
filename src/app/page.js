@@ -1,8 +1,14 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import EditableLinkField from './components/EditableLinkField'
 import NewLinkForm from './components/NewLinkForm'
 import { cookies } from 'next/headers'
 import styles from './page.module.css'
+
+export const metadata = {
+  title: 'paperurl',
+  description: 'Simple, accountless URL shortener',
+}
 
 export default function Home() {
   const host = process.env.HOSTNAME
@@ -19,7 +25,7 @@ export default function Home() {
         paperurl
       </h1>
       <h2 className={styles.subtitle}>
-        Simple, accountless URL shortener
+        Simple, accountless URL shortener &mdash; by <Link className={styles.link} href="https://sixbeeps.com/" target="_blank">sixbeeps</Link>
       </h2>
       <hr className={styles.separator}></hr>
       <h3 className={styles.subtitle}>New link</h3>

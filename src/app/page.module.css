@@ -17,6 +17,15 @@
   color: var(--light3);
 }
 
+.link {
+  color: var(--green);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.link:hover {
+  color: var(--lime);
+}
+
 .separator {
   width: 100%;
   margin: 12px 0;
