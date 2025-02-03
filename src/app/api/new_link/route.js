@@ -3,7 +3,7 @@
 import { PrismaClient } from '@prisma/client'
 import { cookies } from 'next/headers'
 import { success, failure } from '@/util/simple_responses'
-import { isUrlValid } from '@/util/url_valid'
+import isUrlValid from '@/util/url_valid'
 
 // Helper function to generate a random string of characters
 function randomCharacters(length) {
@@ -78,6 +78,8 @@ export async function GET(req) {
 	// Add the new link to the cookie array
 	cookieLinks.push({
 		from,
+		to,
+		friendly,
 		key
 	})
 	cookieStore.set("links", JSON.stringify(cookieLinks), {

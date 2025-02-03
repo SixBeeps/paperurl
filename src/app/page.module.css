@@ -13,8 +13,15 @@
 }
 
 .subtitle {
-  font-size: 18pt;
+  font-size: 14pt;
   color: var(--light3);
+}
+
+.separator {
+  width: 100%;
+  margin: 12px 0;
+  padding: 0;
+  border: 1px solid var(--dark3);
 }
 
 .formContainer {
@@ -51,6 +58,9 @@
   background-color: var(--dark2);
   outline: none;
   font-size: 14pt;
+}
+
+.inputText {
   flex-grow: 1;
 }
 
