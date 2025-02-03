@@ -2,7 +2,7 @@
 import styles from '../page.module.css'
 import { SaveFloppyDisk, Trash } from 'iconoir-react'
 
-export default function EditableLinkField({ link }) {
+export default function EditableLinkField({ link, host }) {
 	return (
 		<form action="/api/edit_link" method="PATCH" className={styles.form} onSubmit={(e) => {
 			e.preventDefault()
@@ -23,7 +23,7 @@ export default function EditableLinkField({ link }) {
 			})
 		}}>
 			<div className={styles.formField}>
-				<span>paperurl.io/</span>
+				<span>{host}/to/</span>
 				<b>{link.from}</b>
 			</div>
 			<input type="hidden" name="from" value={link.from} />

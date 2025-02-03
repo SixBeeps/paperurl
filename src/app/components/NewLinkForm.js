@@ -2,7 +2,7 @@
 import React from 'react'
 import styles from '../page.module.css'
 
-const NewLinkForm = () => {
+const NewLinkForm = ({ host }) => {
 	return (
 		<div className={styles.formContainer}>
 			<form action="/api/new_link" method="GET" className={styles.form} onSubmit={(e) => {
@@ -24,7 +24,7 @@ const NewLinkForm = () => {
 				<input type="url" name="to" placeholder="https://example.com" className={styles.inputText} />
 				</div>
 				<div className={styles.formField}>
-				<label htmlFor="from" className={styles.label}>from paperurl.io/</label>
+				<label htmlFor="from" className={styles.label}>from {host}/to/</label>
 				<input type="text" name="from" placeholder="example" className={styles.inputText} />
 				</div>
 				<div className={styles.formField}>
